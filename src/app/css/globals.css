@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-color: #F1C40E;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-poppins: var(--font-poppins);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-poppins);
+}
+
+.btn{
+  background-color: var(--primary-color);
+  color: var(--color-foreground);
+  padding: 0.5rem 0.75rem;
+  border-radius: 1rem;
+}
+
+.image{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
