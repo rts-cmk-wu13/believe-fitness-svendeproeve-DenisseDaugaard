@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Hero() {
     return(
          <section className="hero">
-          <figure className="relative w-[376px] h-[275px]">
+          <figure className="relative w-[376px] h-[300px]">
             <Image
               src="/app-images/welcome.jpg"
               alt="Welcome"

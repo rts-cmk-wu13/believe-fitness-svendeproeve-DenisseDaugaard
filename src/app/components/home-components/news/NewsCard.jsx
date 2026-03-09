@@ -1,6 +1,6 @@
 import Image from "next/image"
 export default function NewsCard({data}) {
-    console.log(data);
+    //console.log(data);
     
     if(!data || data.length === 0 || data === null || data === undefined) {
        return(
@@ -15,9 +15,12 @@ export default function NewsCard({data}) {
 
     return(
         <section className="p-4 my-8">
+    <h1 className="text-4xl font-bold text-[var(--primary-color)] mb-2">News</h1>
+   
         {data?.map(classItem => (
-            <div key={classItem.id}>
-                {console.log(classItem?.asset?.url)}
+            <div className="mb-12" key={classItem.id}>
+                {/* {console.log(classItem?.asset?.url)} */}
+                <h3 className="title">{classItem.title}</h3>
                 <Image
                 width={600}
                 height={400}
@@ -26,7 +29,6 @@ export default function NewsCard({data}) {
                 unoptimized // this allows loading images from localhost without optimization, which is useful during development
                 loading="lazy"
                 />
-                <h3 className="text-2xl">{classItem.title}</h3>
                 <p>{classItem.text}</p>
              </div>
         ))}
