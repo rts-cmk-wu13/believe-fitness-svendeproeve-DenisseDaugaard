@@ -3,6 +3,7 @@ import NewsCard from "./components/home-components/news/NewsCard";
 import NewsLetter from "./components/home-components/newsletter/NewsLetter";
 import { getJSON } from "@/app/lib/dal/global-http"
 import Testimonials from "./components/home-components/testimonials/Testimonials";
+import Contact from "./components/home-components/contact/ContactForm"
 
 
 export default async function Home() {
@@ -20,6 +21,7 @@ export default async function Home() {
         <NewsCard data={news?.data} />
         <NewsLetter />
         <Testimonials testimonials={testimonials?.data}/>
+        <Contact/>
 
       </article>
   );

@@ -14,13 +14,6 @@ export async function signupNewsLetters(_, formData) {
     const { newsLetters } = await getCookiesValues();
     //console.log("📧 Newsletter:", newsLetters);
 
-    if(JSON.stringify(newsLetters).includes(email)){
-        return {
-            values: { email: "" },
-            serverMessage: { error: "You are already subscribed to the newsletter." },
-        };
-    }
-
      const result = newsLetterScheme.safeParse({
             email,
         });
@@ -32,16 +25,24 @@ export async function signupNewsLetters(_, formData) {
             }
         }
         //console.log(result);
+
         
+        if(JSON.stringify(newsLetters).includes(email)){
+            return {
+                values: { email: "" },
+                serverMessage: { error: "You are already subscribed to the newsletter." },
+            };
+        }
+    
 
        const response = await postJSON(newsLetterUrl, { email: result.data.email });
 
-    //    if(response.status === 500){
-    //        return{
-    //            values: { email: "" },
-    //            serverMessage: { error:"Resource not found. Please try again later." },
-    //        }
-    //    }
+      if(response.status === 404){
+            return {
+                values: { email: "" },
+                serverMessage: { error:"An error ocurred while sending your message. Try again later"},
+            };
+        }
 
         if (!response.ok) {
             console.log('❌',response);
