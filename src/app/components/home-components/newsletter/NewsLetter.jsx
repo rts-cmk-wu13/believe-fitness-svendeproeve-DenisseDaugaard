@@ -11,7 +11,7 @@ export default function NewsLetter(){
     }
     const [state, formAction, isPending] = useActionState(signupNewsLetters, initialState)
     return(
-        <section className="p-4 my-8">
+        <section className="p-4 mb-8">
             <h2 className="title">Sign up for our newsletter</h2>
             <p>Sign up to receive the latest news and announcements from Believe Fitness</p>
 

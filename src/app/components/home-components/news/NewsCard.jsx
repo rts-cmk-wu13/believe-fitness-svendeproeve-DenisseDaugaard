@@ -14,7 +14,7 @@ export default function NewsCard({data}) {
     }
 
     return(
-        <section className="p-4 my-8">
+        <section className="p-4 mt-8">
     <h1 className="text-4xl font-bold text-[var(--primary-color)] mb-2">News</h1>
    
         {data?.map(classItem => (

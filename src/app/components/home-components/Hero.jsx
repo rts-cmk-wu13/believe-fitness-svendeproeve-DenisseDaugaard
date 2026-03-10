@@ -11,7 +11,7 @@ export default function Hero() {
               width={1400}
               height={738}
               loading="eager"
-              className="relative image drop-shadow-green-800"
+              className="brightness-50 image drop-shadow-green-800"
             />
           </figure>
           <div className="absolute flex flex-col justify-center font-semibold text-2xl top-[150px] left-[20px]">

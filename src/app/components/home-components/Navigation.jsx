@@ -37,7 +37,7 @@ export default function Navigation() {
                 </nav>) 
             : 
                 (<button 
-                    className="text-gray-500 text-4xl flex justify-self-end" 
+                    className="text-gray-200 text-shadow-lg text-4xl flex justify-self-end" 
                     onClick={() => setIsVisible(true)}><HiOutlineMenuAlt3 /></button>)
         }
         </>

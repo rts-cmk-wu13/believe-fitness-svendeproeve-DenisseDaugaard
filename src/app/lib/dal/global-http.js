@@ -19,7 +19,7 @@ export async function postJSON(url, body, token) {
     const text = !isJson ? await res.text().catch(() => null) : null;
 
     if (!res.ok) {
-      const message = (data && (data.message || data.error)) ||text || "Noget gik galt ved oprettelsen af data";
+      const message = (data && (data.message || data.error)) ||text || "Something went wrong, please try again later";
       return { ok: false, status: res.status, data, text: message };
     }
 
@@ -28,7 +28,7 @@ export async function postJSON(url, body, token) {
     return {
       ok: false,
       data: null,
-      text: "Netværksfejl: kunne ikke oprette forbindelse til serveren",
+      text: "Network Error: it was not possible to connect to the server, try again later",
     };
   }
 }
@@ -42,7 +42,7 @@ export async function getJSON(url) {
     let data = null;
     
     if (!res.ok) {
-      return { ok: false, status: res.status, data: null, text: "Der skete en fejl ved indlæsning af data" };
+      return { ok: false, status: res.status, data: null, text: "Something went wrong while fetching data, please try again later" };
     }
 
     if (contentType.includes("application/json")) {
@@ -58,7 +58,7 @@ export async function getJSON(url) {
     return {
       ok: false,
       data: null, 
-      text: "Netværksfejl: kunne ikke oprette forbindelse til serveren" 
+      text: "Network Error: it was not possible to connect to the server, try again later", 
     };
   }
 }
@@ -88,7 +88,7 @@ export async function deleteJSON(url, token) {
     return {
       ok: false,
       data: null, 
-      text: "Der skete en fejl ved indlæsning af data" };
+      text: "Network Error: it was not possible to connect to the server, try again later" };
   }
 
   
