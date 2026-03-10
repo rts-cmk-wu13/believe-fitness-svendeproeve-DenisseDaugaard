@@ -4,7 +4,7 @@ import NewsLetter from "./components/home-components/newsletter/NewsLetter";
 import { getJSON } from "@/app/lib/dal/global-http"
 import Testimonials from "./components/home-components/testimonials/Testimonials";
 import Contact from "./components/home-components/contact/ContactForm"
-
+import Footer from "./components/home-components/Footer"
 
 export default async function Home() {
   const newsUrl = "http://localhost:4000/api/v1/news";
@@ -22,6 +22,7 @@ export default async function Home() {
         <NewsLetter />
         <Testimonials testimonials={testimonials?.data}/>
         <Contact/>
+        <Footer/>
 
       </article>
   );

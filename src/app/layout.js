@@ -25,11 +25,8 @@ export default function RootLayout({ children, child}) {
         className={`relative ${poppins.variable} ${geistSans.variable} antialiased`}
       >
         <main>
-          <header className="grid grid-cols-2 p-4 absolute z-50 w-full">
-            <div>
-             {child}
-            </div>
-            <div>
+          <header className="grid grid-cols-2 p-4 absolute top-4 right-4 z-50 w-full">
+            <div className="col-span-2">
             <Navigation />
             </div>
           </header>

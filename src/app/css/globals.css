@@ -90,6 +90,27 @@ body {
   font-weight: bold;
 }
 
+.class_card_name{
+  font-weight: 500;
+  font-size: 18px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary-color);
+  color: var(--color-foreground);
+  padding: 0.75rem;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.class_list{
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
