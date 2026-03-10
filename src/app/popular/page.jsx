@@ -1,6 +1,7 @@
 import { getJSON } from "../lib/dal/global-http"
-import ClassCard from "@/app/popular/ClassCard"
+import ClassCard from "@/app/components/classes-components/ClassCard"
 import Image from "next/image"
+import Link from "next/link"
 
 export default async function Popular() {
     const url = "http://localhost:4000/api/v1/classes";
@@ -15,6 +16,7 @@ export default async function Popular() {
             </span>
         <section className="relative mt-12">
             <figure className="w-full h-[350px] rounded-[1rem] overflow-hidden">
+               <Link href={`/popular/${classes[3]?.id}`} className="w-full h-full">
                 <Image
                 src={classes[3]?.asset?.url}
                 width={200}
@@ -22,6 +24,7 @@ export default async function Popular() {
                 unoptimized
                 alt={classes[3]?.className}
                 className="rounded-[1rem] image"/>
+               </Link>
             </figure>
             <div 
             className="class_card_name h-[5rem] w-[80%] text-sm">

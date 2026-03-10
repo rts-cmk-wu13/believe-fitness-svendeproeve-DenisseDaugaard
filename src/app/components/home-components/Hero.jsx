@@ -18,7 +18,7 @@ export default function Hero() {
             <span className="text-2xl text-[var(--primary-color)]">Welcome to</span>
             <span className="text-2xl text-[var(--primary-color)]">Believe Fitness</span>
             <div className="flex gap-4 mt-4">
-              <Link href="/classes" className="btn text-sm font-semibold text-black">CLASSES</Link>
+              <Link href="/popular" className="btn text-sm font-semibold text-black">CLASSES</Link>
               <Link href="/login" className="btn text-sm font-semibold text-black">LOG IN</Link>
             </div>
           </div>
