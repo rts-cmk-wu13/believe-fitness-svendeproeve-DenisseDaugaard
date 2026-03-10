@@ -6,7 +6,7 @@ import { IoArrowBack } from "react-icons/io5";
 export default async function PopularClass({params}) {
     const { classId } = await params
     const url = `http://localhost:4000/api/v1/classes/${classId}`;
-    const { ok, data } = await getJSON(url);
+    const {data} = await getJSON(url);
     const classData = data || {};
     console.log(classData);
 

@@ -24,7 +24,7 @@ export const contactScheme = baseScheme.pick({
     message:true,
 })
 
-export const loginScheme = baseScheme.pick({
+export const loginSchema = baseScheme.pick({
     username:true,
     password:true,
 })

@@ -7,12 +7,11 @@ export async function getCookiesValues() {
         token: cookieStore.get("token")?.value || null,
         newsLetters: cookieStore.get("newsLetters")?.value || null,
         expirationTime: cookieStore.get("expirationTime")?.value || null,
-        age: cookieStore.get("age")?.value || null,
         firstname: cookieStore.get("firstname")?.value || null,
         lastname: cookieStore.get("lastname")?.value || null,
         role: cookieStore.get("role")?.value || null,
         userId: cookieStore.get("userId")?.value || null,
-        userActivities: cookieStore.get("userActivities")?.value ? JSON.parse(cookieStore.get("userActivities").value) : [],
-        adminActivities: cookieStore.get("instructorActivities")?.value ? JSON.parse(cookieStore.get("instructorActivities").value) : [],
+        userClasses: cookieStore.get("userClasses")?.value ? JSON.parse(cookieStore.get("userClasses").value) : [],
+        adminClasses: cookieStore.get("instructorClasses")?.value ? JSON.parse(cookieStore.get("instructorClasses").value) : [],
     }
 };
