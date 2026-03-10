@@ -28,7 +28,7 @@ export default function Navigation() {
                             <Link href="/search" className={isActive("/search")} onClick={() => setIsVisible(false)}>Search</Link>
                         </li>
                         <li>
-                            <Link href="/profile" className={isActive("/profile")}>My Profile</Link>
+                            <Link href="/profile" className={isActive("/profile")} onClick={() => setIsVisible(false)}>My Profile</Link>
                         </li>
                         <li>
                         LOG OUT 

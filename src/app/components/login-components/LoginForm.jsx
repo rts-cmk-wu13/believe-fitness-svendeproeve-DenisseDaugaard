@@ -21,7 +21,7 @@ export default function LoginForm(){
                 <input
                     type="text"
                     name="username"
-                    placeholder="Brugernavn"
+                    placeholder="Enter your username"
                      className="border rounded-[3rem] border-gray-500 mr-2 p-3 text-black"
                     defaultValue={state?.values?.username ?? ""}
                     />
@@ -32,7 +32,7 @@ export default function LoginForm(){
                 <input
                     type="password"
                     name="password"
-                    placeholder="Adgangskode"
+                    placeholder="Enter your password"
                      className="border rounded-[3rem] border-gray-500 mr-2 p-3 text-black"
                     defaultValue={state?.values?.password ?? ""}
                     />

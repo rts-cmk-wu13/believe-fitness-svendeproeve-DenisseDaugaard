@@ -96,7 +96,7 @@ export async function loginUser(_, formData) {
             cookieStore.set("userClasses", JSON.stringify(userData?.data?.classes || []));
 
 
-            //return redirect("/profile");
+            return redirect("/profile");
 
 
 }
