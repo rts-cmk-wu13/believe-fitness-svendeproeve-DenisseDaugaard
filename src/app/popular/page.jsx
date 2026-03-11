@@ -2,6 +2,7 @@ import { getJSON } from "../lib/dal/global-http"
 import ClassCard from "@/app/components/classes-components/ClassCard"
 import Image from "next/image"
 import Link from "next/link"
+import Rating from "../components/classes-components/Rating"
 
 export default async function Popular() {
     const url = "http://localhost:4000/api/v1/classes";
@@ -39,7 +40,8 @@ export default async function Popular() {
             </figure>
             <div 
             className="class_card_name h-[5rem] w-[80%] text-sm">
-            {classes[3]?.className}</div>
+            {classes[3]?.className}
+            </div>
         </section>
             <section className="mt-12">
             <h2 className="font-semibold my-4 text-2xl">Classes for you</h2>

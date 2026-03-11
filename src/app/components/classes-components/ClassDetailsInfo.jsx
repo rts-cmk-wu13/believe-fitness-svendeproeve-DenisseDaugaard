@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Rating from "./Rating";
+import SignUpButton from "./signup/SignUpBtn";
 
 export default function ClassDetailsInfo({classData, averageRating, instructorData, isEnrolled, isLoggedIn}) {
+    console.log( 'is enrolled', isEnrolled);
+    console.log( 'is logged in', isLoggedIn);
+    
     return(
 
     <>
@@ -28,15 +32,10 @@ export default function ClassDetailsInfo({classData, averageRating, instructorDa
                     </figure>
                     <p>{instructorData?.trainerName}</p>
                 </section>
-                {!isEnrolled ? (
-                    isLoggedIn ? 
-                    (
-                        <button className="btn w-10/12 absolute top-[300px] left-1/2 -translate-x-1/2 bg-[#9AE630] text-white font-bold rounded-lg">
-                            SIGN UP
-                        </button>
-                    ):null
-                   
-                ) : ( <button className="btn w-10/12 absolute top-[300px] left-1/2 -translate-x-1/2 bg-[#9AE630] text-white font-bold rounded-lg">
+                {!isEnrolled && isLoggedIn ? 
+                (<SignUpButton classId={classData?.id} />) 
+                 : 
+                 ( <button className="btn w-10/12 absolute top-[300px] left-1/2 -translate-x-1/2 bg-[#9AE630] text-white font-bold rounded-lg">
                             LEAVE
                         </button>)}
                 

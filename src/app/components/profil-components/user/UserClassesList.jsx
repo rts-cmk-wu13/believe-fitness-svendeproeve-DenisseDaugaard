@@ -14,7 +14,7 @@ export default function UserClassesList({ userClasses }) {
     return(
         <>
         {userClasses?.map(classItem =>(
-            <section  className="p-4 border border-gray-500 rounded-[1rem]" key={classItem.id}>
+            <section className="p-4 border border-gray-500 rounded-[1rem] mb-8">
                     <div>
                         <h3 className="text-2xl font-semibold">{classItem.className}</h3>
                         <p className="text-gray-60 my-2">{classItem.classDay} - {classItem.classTime}</p>

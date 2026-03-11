@@ -20,10 +20,10 @@ export default async function PopularClass({params}) {
     //console.log(isLoggedIn);
     const ratingUrl = `http://localhost:4000/api/v1/classes/${classId}/ratings`;
     const {data: ratingData} = await getJSON(ratingUrl);
-    console.log(ratingData);
+    //console.log(ratingData);
     const averageRating = ratingData?.reduce((acc, rating) => acc + rating.rating, 0) / ratingData.length || 0;
     // here we calculate the average rating by summing up all the ratings and dividing by the number of ratings. If there are no ratings, we default to 0 to avoid division by zero errors.
-    console.log(averageRating);
+    //console.log(averageRating);
     
     const instructorUrl = `http://localhost:4000/api/v1/trainers/${classData.trainer.id}`;
     const {data: instructorData} = await getJSON(instructorUrl);
