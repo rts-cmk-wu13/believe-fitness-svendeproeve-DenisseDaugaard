@@ -1,10 +1,24 @@
+"use client"
+
 import Image from "next/image";
 import Rating from "./Rating";
 import SignUpButton from "./signup/SignUpBtn";
+import LeaveModal from "./leave/LeaveActivityModal";
+import { useState, useRef } from "react";
+
 
 export default function ClassDetailsInfo({classData, averageRating, instructorData, isEnrolled, isLoggedIn}) {
     console.log( 'is enrolled', isEnrolled);
     console.log( 'is logged in', isLoggedIn);
+
+       
+    const [selectedActivity, setSelectedActivity] = useState(null);
+    const modalRef = useRef(null);
+    const openModal = (activity) => {
+        setSelectedActivity(activity);
+        modalRef.current?.showModal();
+    };
+      
     
     return(
 
@@ -15,10 +29,10 @@ export default function ClassDetailsInfo({classData, averageRating, instructorDa
         </section>
         <section className="absolute top-[320px] left-0 p-6">
             <span className="font-semibold">{classData?.classDay} - {classData?.classTime}</span>
-            <p>{classData?.classDescription}</p>
+            <p className="mt-4">{classData?.classDescription}</p>
             <div className="py-4">
                 <h3 className="py-2 font-bold">Trainer</h3>
-                <section className="flex items-center justify-center gap-4 p-4">
+                <section className="flex items-center gap-4 py-4">
                     <figure className="w-[100px] h-[100px]">
                         <Image
                         src={instructorData?.asset?.url}
@@ -35,12 +49,17 @@ export default function ClassDetailsInfo({classData, averageRating, instructorDa
                 {!isEnrolled && isLoggedIn ? 
                 (<SignUpButton classId={classData?.id} />) 
                  : 
-                 ( <button className="btn w-10/12 absolute top-[300px] left-1/2 -translate-x-1/2 bg-[#9AE630] text-white font-bold rounded-lg">
-                            LEAVE
-                        </button>)}
+                 (<button className="btn w-full" onClick={() => openModal(classData)}>Leave</button>)}
                 
             </div>
         </section>
+        
+          <LeaveModal
+                actId={selectedActivity?.id}
+                modalRef={modalRef}
+                title={"Leave Class"}
+                message={`Are you sure you want to leave ${selectedActivity?.className}?`}
+                style="w-10/12 mx-auto my-auto"/>
     </>
     )
 }
