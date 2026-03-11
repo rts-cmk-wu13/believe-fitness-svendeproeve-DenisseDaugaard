@@ -3,10 +3,13 @@ import {useState} from "react"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import LogOutBtn from "./log-out/LogOutBtn";
 
-export default function Navigation() {
-    const pathname = usePathname();
-
+export default function Navigation({token}) {
+    //console.log('here is my token in the nav',token);
+    const isLoggedIn = token ? "display block" : "hidden";
+    
+    const pathname = usePathname(); 
     if(pathname === "/login")return null;
     const [isVisible, setIsVisible] = useState(false);
 
@@ -28,11 +31,11 @@ export default function Navigation() {
                         <li>
                             <Link href="/search" className={isActive("/search")} onClick={() => setIsVisible(false)}>Search</Link>
                         </li>
-                        <li>
+                        <li className={isLoggedIn}>
                             <Link href="/profile" className={isActive("/profile")} onClick={() => setIsVisible(false)}>My Profile</Link>
                         </li>
                         <li>
-                        LOG OUT 
+                        {!token ? (<Link href="/login">LOGIN</Link>) : (<LogOutBtn/>)}
                         </li>
                     </ul>
                 </nav>) 

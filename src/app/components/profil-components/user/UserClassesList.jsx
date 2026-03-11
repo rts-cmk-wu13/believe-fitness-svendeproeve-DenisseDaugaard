@@ -20,7 +20,7 @@ export default function UserClassesList({ userClasses }) {
                         <p className="text-gray-60 my-2">{classItem.classDay} - {classItem.classTime}</p>
                     </div>
                     <div className="flex justify-between mt-4">
-                        <Link href={`/classes/${classItem.id}`} className="btn">Show Class</Link>
+                        <Link href={`/popular/${classItem.id}`} className="btn">Show Class</Link>
                         <button className="btn">Leave</button>
                     </div>
             </section>

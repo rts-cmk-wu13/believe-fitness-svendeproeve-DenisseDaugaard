@@ -29,7 +29,7 @@ export default function NewsCard({data}) {
                 unoptimized // this allows loading images from localhost without optimization, which is useful during development
                 loading="lazy"
                 />
-                <p>{classItem.text}</p>
+                <p className="mt-4">{classItem.text}</p>
              </div>
         ))}
         </section>

@@ -14,7 +14,7 @@ export default async function Profile(){
         )
     }
 
-    console.log(userClasses);
+    //console.log(userClasses);
     
     return(
         <article className="p-8">

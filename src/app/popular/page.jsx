@@ -9,6 +9,17 @@ export default async function Popular() {
     const {ok, data } = await getJSON(url)
     console.log(data)
     const classes = data || []
+
+    if(!ok) {
+        return(
+            <article className="p-8">
+                <span className="text-2xl">
+                   Popular Classes
+                </span>
+                <p className="mt-4">Failed to load classes. Please try again later.</p>
+            </article>
+        )
+    }
     return(
         <article className="p-8">
             <span className="text-2xl">
