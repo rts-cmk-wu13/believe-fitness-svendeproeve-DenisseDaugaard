@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { SignUpToAClass } from "./signUpAction";
 
 export default function SignUpButton({ classId }) {
-  console.log('classId', classId);
+  //console.log('classId', classId);
   
   const initialState = { serverResponse: {} };
 

@@ -1,4 +1,4 @@
-import {LogoutAction} from "./logOUtAction";
+import {LogoutAction} from "./logOutAction";
 
 export default function LogOutBtn() {
      return(

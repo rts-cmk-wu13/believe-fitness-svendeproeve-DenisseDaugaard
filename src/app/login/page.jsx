@@ -1,5 +1,5 @@
-import { LoginHeader } from "../components/login-components/LoginHeader"
-import LoginForm from "../components/login-components/LoginForm"
+import { LoginHeader } from "../components/global-components/login/LoginHeader"
+import LoginForm from "../components/global-components/login/LoginForm"
 
 export default function Login() {
     return(

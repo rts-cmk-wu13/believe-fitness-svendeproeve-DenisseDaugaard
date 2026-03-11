@@ -12,6 +12,6 @@ export async function getCookiesValues() {
         role: cookieStore.get("role")?.value || null,
         userId: cookieStore.get("userId")?.value || null,
         userClasses: cookieStore.get("userClasses")?.value ? JSON.parse(cookieStore.get("userClasses").value) : [],
-        adminClasses: cookieStore.get("instructorClasses")?.value ? JSON.parse(cookieStore.get("instructorClasses").value) : [],
+        allClassesIds: cookieStore.get("allClassesIds")?.value ? JSON.parse(cookieStore.get("allClassesIds").value) : [],
     }
 };

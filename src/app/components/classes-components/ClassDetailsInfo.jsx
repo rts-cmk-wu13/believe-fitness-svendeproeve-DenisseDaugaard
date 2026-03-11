@@ -8,8 +8,8 @@ import { useState, useRef } from "react";
 
 
 export default function ClassDetailsInfo({classData, averageRating, instructorData, isEnrolled, isLoggedIn}) {
-    console.log( 'is enrolled', isEnrolled);
-    console.log( 'is logged in', isLoggedIn);
+    //console.log( 'is enrolled', isEnrolled);
+    //console.log( 'is logged in', isLoggedIn);
 
        
     const [selectedActivity, setSelectedActivity] = useState(null);

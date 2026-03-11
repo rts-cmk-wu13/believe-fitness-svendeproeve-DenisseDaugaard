@@ -45,7 +45,7 @@ export async function loginUser(_, formData) {
             if(response.status === 401){
                 return {
                     values: { username: "", password: "" },
-                    serverMessage:{ error:"Ugyldigt brugernavn eller adgangskode" || response.text},
+                    serverMessage:{ error:"Wrong credentials, check your data and try again" || response.text},
                 }
             }
            
@@ -53,7 +53,7 @@ export async function loginUser(_, formData) {
             //console.log('❌', response);
                return {
                    values: { username: "", password: "" },
-                  serverMessage:{ error: `${response.text}, prøv igen senere` || "ugyldigt brugernavn eller adgangskode" },
+                  serverMessage:{ error: `${response.text}` || "Wrong credentials, check your data and try again" },
                 };
             }
 
@@ -77,12 +77,14 @@ export async function loginUser(_, formData) {
                         }
                     }
                 const classesData = await classesResponse.data;
-                cookieStore.set("allClasses", JSON.stringify(classesData) || []);
+                const classesIds = classesData.map(c => c.id);
+                cookieStore.set("allClassesIds", JSON.stringify(classesIds) || []);
             }
 
             if (role === "default") cookieStore.set("role", "Member");
             
             const userData = await getUserById(`http://localhost:4000/api/v1/users/${userId}`);
+            
             if(!userData.ok){
                 return{
                     data: null,
@@ -90,7 +92,7 @@ export async function loginUser(_, formData) {
                 }
             }
             console.log(userData.data);
-
+            
             cookieStore.set("firstname", userData.data.userFirstName);
             cookieStore.set("lastname", userData.data.userLastName);
             cookieStore.set("userClasses", JSON.stringify(userData?.data?.classes || []));
