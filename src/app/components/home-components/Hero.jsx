@@ -4,14 +4,14 @@ import Link from "next/link";
 export default function Hero() {
     return(
          <section className="hero">
-          <figure className="relative w-[376px] h-[300px]">
+          <figure className="relative w-full h-[300px]">
             <Image
               src="/app-images/welcome.jpg"
               alt="Welcome"
               width={1400}
               height={738}
               loading="eager"
-              className="brightness-50 image drop-shadow-green-800"
+              className="brightness-50 image"
             />
           </figure>
           <div className="absolute flex flex-col justify-center font-semibold text-2xl top-[150px] left-[20px]">

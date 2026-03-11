@@ -1,7 +1,9 @@
 import { getCookiesValues } from "../lib/dal/cookiesStore"
+import ProfileHeader from "../components/profil-components/ProfileHeader"
+import UserClassesList from "../components/profil-components/user/UserClassesList"
 
 export default async function Profile(){
-    const { token, firstname, lastname, userClasses } = await getCookiesValues()
+    const { token, firstname, lastname, userClasses, role } = await getCookiesValues()
 
     if(!token){
         return(
@@ -12,11 +14,19 @@ export default async function Profile(){
         )
     }
 
+    console.log(userClasses);
+    
     return(
         <article className="p-8">
-            <h1 className="text-2xl font-bold">Profile</h1>
-            <p>First Name: {firstname}</p>
-            <p>Last Name: {lastname}</p>
+            <span className="text-2xl">
+               My Profile
+            </span>
+            <ProfileHeader 
+            firstname={firstname} 
+            lastname={lastname} 
+            role={role} />
+
+            <UserClassesList userClasses={userClasses} />
         </article>
     )
 }

@@ -11,6 +11,7 @@ export default function Navigation() {
     const [isVisible, setIsVisible] = useState(false);
 
     const isActive = (path) => pathname === path ? "text-[var(--primary-color)]" : "text-black";
+
     return(
         <>
          {isVisible 
@@ -37,8 +38,8 @@ export default function Navigation() {
                 </nav>) 
             : 
                 (<button 
-                    className="text-gray-200 text-shadow-lg text-4xl flex justify-self-end" 
-                    onClick={() => setIsVisible(true)}><HiOutlineMenuAlt3 /></button>)
+                    className="text-[#9E9E9E] text-4xl flex justify-self-end" 
+                    onClick={() => setIsVisible(true)}><HiOutlineMenuAlt3  className="burger_menu"/></button>)
         }
         </>
     )
