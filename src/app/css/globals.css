@@ -1,6 +1,36 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@theme {
+  --animate-logo:logo 3s ease-out forwards ;
+  --animate-fadeup: fadeup 3s ease-out 5s forwards ; 
+                 /* name duration timing-function delay fill-mode */
+
+  
+  @keyframes logo {
+    0%{
+      transform: scale(0.6);
+      opacity: 0;
+    }
+    100%{
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeup {
+     0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+   }
+  }
+
+
 
 :root {
   --primary-color: #F1C40E;
@@ -18,9 +48,10 @@ body {
 .btn{
   background-color: var(--primary-color);
   color: var(--color-foreground);
-  padding: 0.5rem 0.75rem;
-  border-radius: 1rem;
+  padding: 0.75rem 0.75rem;
+  border-radius: 3rem;
   font-weight: 500;
+  font-size: medium;
 }
 
 .image{

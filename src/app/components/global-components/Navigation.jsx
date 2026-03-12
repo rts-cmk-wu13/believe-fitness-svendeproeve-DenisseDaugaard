@@ -10,7 +10,7 @@ export default function Navigation({token}) {
     const isLoggedIn = token ? "display block" : "hidden";
     
     const pathname = usePathname(); 
-    if(pathname === "/login")return null;
+    if(pathname === "/login" || pathname === "/login/signup")return null;
     const [isVisible, setIsVisible] = useState(false);
 
     const isActive = (path) => pathname === path ? "text-[var(--primary-color)]" : "text-black";

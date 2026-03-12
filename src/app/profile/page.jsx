@@ -1,12 +1,12 @@
 import { getCookiesValues } from "../lib/dal/cookiesStore"
 import ProfileHeader from "../components/profil-components/ProfileHeader"
 import UserClassesList from "../components/profil-components/user/UserClassesList"
-import AllClassesList from "../components/profil-components/admin/AllClassesList"
+import AllClassesList from "../components/profil-components/admin/AdminProfile"
 
 export default async function Profile(){
-    const { token, firstname, lastname, userClasses, role , allClassesIds} = await getCookiesValues()
+    const { token, firstname, lastname, userClasses, role , classesIds} = await getCookiesValues()
     const isAdmin = role === "Admin"
-    console.log(isAdmin);
+    //console.log(isAdmin);
     
     if(!token){
         return(
@@ -30,7 +30,7 @@ export default async function Profile(){
             role={role} />
 
             {isAdmin && (
-                <AllClassesList allClassesIds={allClassesIds} />
+                <AllClassesList classesIds={classesIds} />
             )}
 
             {!isAdmin && (

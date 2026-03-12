@@ -5,6 +5,7 @@ import { getJSON } from "@/app/lib/dal/global-http"
 import Testimonials from "./components/home-components/testimonials/Testimonials";
 import Contact from "./components/home-components/contact/ContactForm"
 import Footer from "./components/home-components/Footer"
+import Splash from "./components/global-components/Splash";
 
 export default async function Home() {
   const newsUrl = "http://localhost:4000/api/v1/news";
@@ -16,7 +17,7 @@ export default async function Home() {
   
   return (
       <article>
-       
+       <Splash />
         <Hero/>
         <NewsCard data={news?.data} />
         <NewsLetter />

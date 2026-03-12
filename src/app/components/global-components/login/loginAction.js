@@ -78,7 +78,9 @@ export async function loginUser(_, formData) {
                     }
                 const classesData = await classesResponse.data;
                 const classesIds = classesData.map(c => c.id);
-                cookieStore.set("allClassesIds", JSON.stringify(classesIds) || []);
+
+                cookieStore.set("classesIds", JSON.stringify(classesIds));
+
             }
 
             if (role === "default") cookieStore.set("role", "Member");
