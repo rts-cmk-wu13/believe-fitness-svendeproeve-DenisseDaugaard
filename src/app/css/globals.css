@@ -2,21 +2,17 @@
 @import "tw-animate-css";
 
 @theme {
-  --animate-logo:logo 3s ease-out forwards ;
-  --animate-fadeup: fadeup 3s ease-out 5s forwards ; 
-                 /* name duration timing-function delay fill-mode */
-
   
-  @keyframes logo {
+ @keyframes logo{
     0%{
-      transform: scale(0.6);
-      opacity: 0;
+        transform: scale(0.6);
+        opacity: 0;
     }
     100%{
-      transform: scale(1);
-      opacity: 1;
+        transform: scale(1);
+        opacity: 1;
     }
-  }
+}
   
   @keyframes fadeup {
      0% {
@@ -28,8 +24,25 @@
       opacity: 0;
     }
    }
+
+  @keyframes backcolor {
+    100% {
+      background-position: 0 0;
+    }
+   
+  }
   }
 
+  @keyframes message {
+  0% { 
+    transform: translateY(0); 
+    opacity: 0; /* Start stadig usynlig ved 0% */
+  }
+  100% { 
+    transform: translateY(100%); 
+    opacity: 1; 
+  }
+}
 
 
 :root {
@@ -101,3 +114,33 @@ svg.burger_menu{
     color: var(--color-foreground);
     filter: drop-shadow(0 0 2px rgb(230, 226, 226));
 }
+/* -----------------animations classes ------------------- */
+  .welcome_title {
+  font-size: 2.75rem;
+  line-height: 1.2;
+  padding-left: 2rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #f1da03, rgb(240, 224, 6), #eef105);
+  background-size: 750px 100%;
+  background-position: -750px 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  animation: backcolor 5s linear forwards;
+}
+    
+    
+        .go_to_home{
+          animation: fadeup 2s ease-out forwards;
+        }
+
+        .message{
+          opacity: 0; /* Skjul elementet som standard */
+          animation: message 1s forwards; /* 'forwards' beholder slut-stadiet */
+          animation-delay: 2s; /* Vent 3 sekunder før start */
+        }
+
+      
