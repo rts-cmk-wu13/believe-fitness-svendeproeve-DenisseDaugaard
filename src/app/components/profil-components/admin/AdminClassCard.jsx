@@ -17,7 +17,7 @@ export default function AdminClassesList({ classesData }) {
                         <div className="mt-4 flex justify-between items-center">
                             <Link href={`/profile/${classItem.id}`} className="btn">PARTICIPANTS</Link>
                             <div className="flex gap-2">
-                                <Link href={`/profile/update-class/${classItem.id}`} className="btn"><FiEdit/></Link>
+                                <Link href={`/profile/updateclass/${classItem.id}`} className="btn"><FiEdit/></Link>
                                 <button className="btn"><RiDeleteBin7Line /></button>
                             </div>
                         </div>

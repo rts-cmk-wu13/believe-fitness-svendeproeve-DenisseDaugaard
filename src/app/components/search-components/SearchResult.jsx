@@ -8,7 +8,7 @@ export default function SearchResult({ searchResults }) {
     return (
         <div>
            <section className="mt-12">
-            <h2 className="text-2xl">Classes</h2>
+            <h2 className="text-2xl mb-4">Classes</h2>
                        <ul className="class_list">
                            {searchResults?.classes?.map(classItem => (
                                <li key={classItem.id} className="relative rounded-[1rem]">
@@ -33,7 +33,7 @@ export default function SearchResult({ searchResults }) {
                                 className="image rounded-[1rem]"
                                 />
                         </figure>
-                        <p> {item.trainerName}</p>
+                        <p className="font-semibold">{item.trainerName}</p>
                        
                     </li>
                 ))}

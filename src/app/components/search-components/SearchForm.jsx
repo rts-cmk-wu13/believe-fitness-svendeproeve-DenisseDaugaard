@@ -11,13 +11,7 @@ export default function SearchBar() {
     const query = q.trim(); // remove leading and trailing whitespace from the search query
   };
 
-  if (!next) { // If the search bar is being deactivated, we want to clear the search query.
-    setQ(""); // Clear the input field immediately for better UX. const params = new URLSearchParams(searchParams.toString());// Create a mutable copy of the current search parameters.
-    params.delete("q"); //return the URL to its base state without the search query, e.g., /activities?q=tango → /activities
-    router.push(pathname); // no trailing "?"
-  }
-
-
+ 
   return (
     <>
       <section className="w-full mt-12 mb-4 border rounded-[3rem] flex items-center p-2">
