@@ -8,7 +8,7 @@ export default function Login() {
         <article className="py-24">
         <div className="mt-2 absolute top-8 left-8 z-50">
             <Link href="/">
-                <IoArrowBack color="gray" size={25} className="text-shadow-md"/>
+                <IoArrowBack color="gray" size={28} className="arrow_back"/>
             </Link>
         </div>
             <LoginHeader />

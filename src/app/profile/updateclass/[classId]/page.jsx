@@ -4,6 +4,7 @@ import Link from "next/link";
 import { IoArrowBack } from "react-icons/io5";
 import { getJSON } from "@/app/lib/dal/global-http";
 import UpdateClassForm from "@/app/components/profil-components/admin/update-class/UpDateForm";
+import { updateClass } from "@/app/components/profil-components/admin/update-class/updateAction";
 
 export default async function UpdateClassPage({ params }) { 
     const {token, role} = await getCookiesValues();
@@ -32,18 +33,17 @@ export default async function UpdateClassPage({ params }) {
             )
         }
     console.log(data);
-    
     return(
         <article className="p-8">
             <div className="mt-2 absolute top-8 left-8 z-50">
                 <Link href="/profile">
-                    <IoArrowBack color="gray" size={25} className="text-shadow-md"/>
+                    <IoArrowBack size={28} className="arrow_back"/>
                 </Link>
             </div>
              < h1 className="text-2xl mb-4 ml-12 mt-[2px]">Update Class</h1>
             <UpdateClassForm  
             initialState={{values: data}} 
-            // updateActivity={updateClass} 
+            updateActivity={updateClass} 
             id={classId}/>
         </article>
     )

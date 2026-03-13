@@ -7,11 +7,11 @@ import LeaveModal from "./leave/LeaveActivityModal";
 import { useState, useRef } from "react";
 
 
-export default function ClassDetailsInfo({classData, averageRating, instructorData, isEnrolled, isLoggedIn}) {
+export default function ClassDetailsInfo({classData, averageRating, instructorData, isEnrolled, isLoggedIn, isSameDay}) {
     //console.log( 'is enrolled', isEnrolled);
     //console.log( 'is logged in', isLoggedIn);
+    //console.log('isSameDay', isSameDay);
 
-       
     const [selectedActivity, setSelectedActivity] = useState(null);
     const modalRef = useRef(null);
     const openModal = (activity) => {
@@ -37,19 +37,24 @@ export default function ClassDetailsInfo({classData, averageRating, instructorDa
                         <Image
                         src={instructorData?.asset?.url}
                         unoptimized
-                        loading="eager"
-                        width={300}
-                        height={400}
+                        width={100}
+                        height={100}
                         alt={instructorData?.trainerName}
                         className="rounded-lg image border shadow-lg rounded-lg"
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL="/app-images/placeholder.jpg"
                         />
                     </figure>
                     <p>{instructorData?.trainerName}</p>
                 </section>
-                {!isEnrolled && isLoggedIn ? 
-                (<SignUpButton classId={classData?.id} />) 
-                 : 
-                 (<button className="btn w-full" onClick={() => openModal(classData)}>Leave</button>)}
+
+                {!isEnrolled && isLoggedIn && !isSameDay && (<SignUpButton classId={classData?.id} />) }
+                 {isSameDay && !isEnrolled && isLoggedIn && 
+                 (<p className="p-2 bg-yellow-200 rounded-lg shadow-md mt-4">
+                    You are already enrolled in another class on the same day. If you want to enrole to {classData?.className}, you should leave the other class.</p>)}
+                 {isEnrolled && isLoggedIn && (<button className="btn w-full" onClick={() => openModal(classData)}>Leave</button>)}
+                 {!isLoggedIn && !isEnrolled && (null)}
                 
             </div>
         </section>

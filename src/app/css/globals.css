@@ -110,9 +110,10 @@ body {
     scrollbar-width: none; 
 }
 
-svg.burger_menu{
-    color: var(--color-foreground);
-    filter: drop-shadow(0 0 2px rgb(230, 226, 226));
+svg.burger_menu, 
+svg.arrow_back{
+    color:lightgray;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
 }
 /* -----------------animations classes ------------------- */
   .welcome_title {
@@ -128,8 +129,8 @@ svg.burger_menu{
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-
   animation: backcolor 5s linear forwards;
+  animation-delay: 2s;
 }
     
     
@@ -142,5 +143,4 @@ svg.burger_menu{
           animation: message 1s forwards; /* 'forwards' beholder slut-stadiet */
           animation-delay: 2s; /* Vent 3 sekunder før start */
         }
-
       /* -------------------Search Bar ------------------------- */

@@ -1,28 +1,29 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { saveSplash } from "./saveSplash";
 
 
-
 export default function Splash() {
-    const splash = typeof window !== "undefined" ? JSON.parse(sessionStorage.getItem("splash")) : null;
     const [isVisible, setIsVisible] = useState("");
 
-    const removeSplash = ()=>{
-    setIsVisible("go_to_home");
-    saveSplash(true);
-    }
+    const [splash, setSplash] = useState(null);
 
-    if(splash){
-        return null;
-    }
+    useEffect(() => {
+        const storedSplash = sessionStorage.getItem("splash");
+        setSplash(storedSplash);
+    }, []);
 
+    const removeSplash =() => {
+        setIsVisible("go_to_home");
+        saveSplash();
+    }
+   
     return(
         <>
          {splash
           ? null 
           : (
-            <div className={`splash fixed top-0 left-0 w-full z-50 flex flex-col items-center justify-center h-screen ${isVisible}`}
+            <div className={`${isVisible} fixed top-0 left-0 w-full z-50 flex flex-col items-center justify-center h-screen`}
             style={{ backgroundImage: "url('/app-images/splash-1.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
            <div className="w-full mt-[200px]">
              <h1 className="welcome_title">Believe</h1>

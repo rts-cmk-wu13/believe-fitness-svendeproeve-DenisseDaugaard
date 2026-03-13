@@ -23,7 +23,7 @@ export default function SearchBar() {
             onChange={(e) => setQ(e.target.value)}
             type="search"
             placeholder="Search classes."
-            className="search p-2 w-full"
+            className="search p-2 w-full outline-none focus:outline-none focus:ring-0"
           />
         </form>
       </section>

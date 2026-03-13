@@ -1,6 +1,7 @@
 
 
-export const saveSplash = (splash) => {
-    sessionStorage.setItem("splash", JSON.stringify(splash));
+export const saveSplash = () => {
+    sessionStorage.setItem("splash", true);
+
 }
 

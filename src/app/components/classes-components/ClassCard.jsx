@@ -12,7 +12,12 @@ export default function ClassCard({classItem, style}){
             height={200}
             unoptimized
             alt={classItem?.className}
-            className="rounded-[1rem] image"/>
+            className="rounded-[1rem] image"
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL="/app-images/placeholder.jpg"
+            />
+            
             </Link>
         </figure>
         <div 

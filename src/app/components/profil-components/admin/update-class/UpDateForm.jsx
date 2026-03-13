@@ -21,7 +21,7 @@ export default function UpdateClassForm({ initialState, updateActivity, id }) {
   const isEnabled = (fieldName) => enabled.has(fieldName);
 
   const inputClass = (fieldName) =>
-    isEnabled(fieldName) ? "border rounded-[3rem] border-gray-500 mr-2 p-3 text-black" : "";
+    isEnabled(fieldName) ? "border rounded-lg border-gray-500 mr-2 p-3 text-black" : "";
 
   return (
     <section className="mt-12">

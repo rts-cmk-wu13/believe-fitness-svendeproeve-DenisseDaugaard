@@ -17,7 +17,7 @@ export default async function Home() {
   
   return (
       <article>
-       <Splash />
+        <Splash/>
         <Hero/>
         <NewsCard data={news?.data} />
         <NewsLetter />

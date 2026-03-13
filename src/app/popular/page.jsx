@@ -28,19 +28,23 @@ export default async function Popular() {
             </span>
         <section className="relative mt-12">
             <figure className="w-full h-[350px] rounded-[1rem] overflow-hidden">
-               <Link href={`/popular/${classes[3]?.id}`} className="w-full h-full">
+               <Link href={`/popular/${classes?.[3].id}`} className="w-full h-full">
                 <Image
-                src={classes[3]?.asset?.url}
+                src={classes?.[3].asset?.url}
                 width={200}
                 height={200}
                 unoptimized
-                alt={classes[3]?.className}
-                className="rounded-[1rem] image"/>
+                alt={classes?.[3].className}
+                className="rounded-[1rem] image"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="/app-images/placeholder.jpg"
+                />
                </Link>
             </figure>
             <div 
             className="class_card_name h-[5rem] w-[80%] text-sm">
-            {classes[3]?.className}
+            {classes?.[3].className}
             </div>
         </section>
             <section className="mt-12">

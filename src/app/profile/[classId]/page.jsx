@@ -28,7 +28,7 @@ export default async function ClassParticipants({params}) {
         <article className="p-8">
             <div className="mt-2 absolute top-8 left-8 z-50">
                 <Link href="/profile">
-                    <IoArrowBack color="gray" size={25} className="text-shadow-md"/>
+                    <IoArrowBack size={28} className="arrow_back"/>
                 </Link>
             </div>
             <div className="mt-8">
