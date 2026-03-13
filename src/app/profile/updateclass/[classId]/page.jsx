@@ -11,7 +11,7 @@ export default async function UpdateClassPage({ params }) {
     if(!token || role !== "Admin") {
         return(
             <ErrorMessage 
-            title="Unauthorized Access"
+            title="Unauthorized"
             message={"You are not authorized to view this page."} 
             linkText="Go back to home"
             href={"/"}
@@ -26,7 +26,7 @@ export default async function UpdateClassPage({ params }) {
         return(
             <ErrorMessage
             title="Server Error"
-            message={"Its not possible to update this class right now. Try agaun later."}
+            message={"Its not possible to update this class right now. Try again later."}
             linkText="Go back to profile"
             href="/profile"
             />

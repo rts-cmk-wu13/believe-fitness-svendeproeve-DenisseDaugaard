@@ -2,6 +2,7 @@ import { getCookiesValues } from "../lib/dal/cookiesStore"
 import ProfileHeader from "../components/profil-components/ProfileHeader"
 import UserClassesList from "../components/profil-components/user/UserClassesList"
 import AllClassesList from "../components/profil-components/admin/AdminProfile"
+import ErrorMessage from "../components/global-components/ErrorMesage"
 
 export default async function Profile(){
     const { token, firstname, lastname, userClasses, role , classesIds} = await getCookiesValues()
@@ -10,10 +11,11 @@ export default async function Profile(){
     
     if(!token){
         return(
-            <article className="p-8 h-screen flex bg-gray-100 flex-col items-center justify-center">   
-                <h1 className="text-2xl font-bold">Profile</h1>
-                <p>You must be logged in to view this page.</p>
-            </article>
+            <ErrorMessage message="You need to be logged in to view your profile."
+            href="/login"
+            linkText="Go to Login"
+            title="Login Required"
+            />
         )
     }
 

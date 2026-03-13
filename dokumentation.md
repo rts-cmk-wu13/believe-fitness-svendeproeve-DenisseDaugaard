@@ -334,3 +334,9 @@ async function createSingleUser(req, res, next) {
 2. Jeg besluttede *ikke* at inkludere stjernebedømmelser i designet, da jeg ikke valgte ***Valgfri opgave A – Ratings*** , og kun én hold inkluderede en rating i API'en.
 
 3. Jeg besluttede at ændre designet af administratorprofilen en smule."Fjern-knap" var *ikke* inkluderet, fordi jeg ikke nå slutningen af **Valgfri opgave C – Opret, rediger og slet en ”class”**
+
+---
+## Ændringer i API
+
+Som jeg nævnte tidligere, har jeg foretaget en lille ændring i API'en. Filen ligger i mappen assets. [Her](./assets/user.controller.js)
+

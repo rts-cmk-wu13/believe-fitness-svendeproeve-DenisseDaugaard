@@ -12,7 +12,7 @@ export default function NewsLetter(){
     }
     const [state, formAction, isPending] = useActionState(signupNewsLetters, initialState)
 
-      useEffect(() => {
+    useEffect(() => {
     if (state?.serverMessage?.success) {
       toast.success(state.serverMessage.success, {
         position: "top-right",
