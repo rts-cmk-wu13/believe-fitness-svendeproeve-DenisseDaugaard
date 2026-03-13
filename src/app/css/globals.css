@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  
+ @keyframes logo{
+    0%{
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+  
+  @keyframes fadeup {
+     0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+   }
+
+  @keyframes backcolor {
+    100% {
+      background-position: 0 0;
+    }
+   
+  }
+  }
+
+  @keyframes message {
+  0% { 
+    transform: translateY(0); 
+    opacity: 0; /* Start stadig usynlig ved 0% */
+  }
+  100% { 
+    transform: translateY(100%); 
+    opacity: 1; 
+  }
+}
+
+
+:root {
+  --primary-color: #F1C40E;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+}
+
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-poppins);
+}
+
+.btn{
+  background-color: var(--primary-color);
+  color: var(--color-foreground);
+  padding: 0.75rem 0.75rem;
+  border-radius: 3rem;
+  font-weight: 500;
+  font-size: medium;
+}
+
+.image{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.title{
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.error_response{
+  color: red;
+  font-weight: bold;
+}
+
+.success_response{
+  color: green;
+  font-weight: bold;
+}
+
+.class_card_name{
+  font-weight: 500;
+  font-size: 18px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary-color);
+  color: var(--color-foreground);
+  padding: 0.75rem;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.class_list{
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+
+svg.burger_menu, 
+svg.arrow_back{
+    color:lightgray;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
+}
+/* -----------------animations classes ------------------- */
+  .welcome_title {
+  font-size: 2.75rem;
+  line-height: 1.2;
+  padding-left: 2rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #f1da03, rgb(240, 224, 6), #eef105);
+  background-size: 750px 100%;
+  background-position: -750px 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: backcolor 5s linear forwards;
+  animation-delay: 2s;
+}
+    
+    
+        .go_to_home{
+          animation: fadeup 2s ease-out forwards;
+        }
+
+        .message{
+          opacity: 0; /* Skjul elementet som standard */
+          animation: message 1s forwards; /* 'forwards' beholder slut-stadiet */
+          animation-delay: 2s; /* Vent 3 sekunder før start */
+        }
+      /* -------------------Search Bar ------------------------- */
+
+      @media screen and (max-width: 1024px) {
+        .splash{
+          height:100% !important;
+        }
+      }
