@@ -50,4 +50,5 @@ splash updated with useEffect, update class form finished, image placeholder add
 
 Eftermiddag - (tidspunkt)
 
-LAST COMMIT 15.55 -> LAST COMMIT OF THE PRIJECT !!
+
+LAST COMMIT 15.55 -> LAST COMMIT OF THE PROJECT !!
