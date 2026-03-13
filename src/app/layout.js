@@ -25,8 +25,7 @@ export default async function RootLayout({ children}) {
   return (
     <html lang="en">
       <body
-        className={`relative ${poppins.variable} ${geistSans.variable} antialiased`}
-      >
+        className={`relative ${poppins.variable} ${geistSans.variable} antialiased`}>
         <main>
           <header className="grid grid-cols-2 p-4 absolute top-4 right-4 z-50 w-full">
             <div className="col-span-2">

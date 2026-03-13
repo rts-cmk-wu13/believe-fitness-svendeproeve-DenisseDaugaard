@@ -17,7 +17,7 @@ export default function SignUpButton({ classId }) {
 
     {!isPending && !state?.serverResponse?.message && (
        <button
-        className="btn w-10/12 absolute top-[300px] left-1/2 -translate-x-1/2 bg-[#9AE630] text-white font-bold rounded-lg"
+        className="btn w-10/12 fixed bottom-4 left-1/2 -translate-x-1/2 bg-[#9AE630] text-white font-bold rounded-lg"
         type="submit"
       >
         SIGN UP
@@ -26,7 +26,7 @@ export default function SignUpButton({ classId }) {
 
       {isPending && !state?.serverResponse?.message && (
        <button
-        className="disabled:opacity-50 btn w-10/12 absolute top-[300px] left-1/2 -translate-x-1/2 bg-[#9AE630] text-white font-bold rounded-lg"
+        className="disabled:opacity-50 btn w-10/12 fixed bottom-4 left-1/2 -translate-x-1/2 bg-[#9AE630] text-white font-bold rounded-lg"
         disabled={isPending}
         type="submit"
       >

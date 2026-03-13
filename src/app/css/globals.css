@@ -144,3 +144,9 @@ svg.arrow_back{
           animation-delay: 2s; /* Vent 3 sekunder før start */
         }
       /* -------------------Search Bar ------------------------- */
+
+      @media screen and (max-width: 1024px) {
+        .splash{
+          height:100% !important;
+        }
+      }
