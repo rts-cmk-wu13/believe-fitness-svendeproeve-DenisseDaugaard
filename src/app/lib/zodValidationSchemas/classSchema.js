@@ -1,5 +1,5 @@
 import z from "zod"
-import { id } from "zod/v4/locales"
+
 
 export const classScheme = z.object({
     file: z.file().min(1, "Please choose a file").max(5 * 1024 * 1024, "The file must be less than 5MB"),
@@ -19,3 +19,14 @@ export const classScheme = z.object({
 })
 
 
+export const createClassSchema = classScheme
+  .omit({
+    id: true,
+    trainerId: true,
+  })
+  .extend({
+    trainerId: z.coerce.number({
+      required_error: "Please choose a trainer",
+      invalid_type_error: "Please choose a trainer",
+    }).min(1, "Please choose a trainer"),
+  })

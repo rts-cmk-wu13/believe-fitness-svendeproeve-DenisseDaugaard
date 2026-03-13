@@ -1,24 +1,24 @@
 "use server";
 
-import { classScheme } from "@/app/lib/zodValidationSchemas/classSchema";
+import {createClassSchema} from "@/app/lib/zodValidationSchemas/classSchema";
 import  z  from "zod";
-import { getJSON} from "@/app/lib/dal/global-http";
-import { postAsset} from "@/app/lib/dal/classes/postAsset";
-import { putJSON } from "@/app/lib/dal/classes/putJSON";     
+import { postAsset } from "@/app/lib/dal/classes/postAsset";
+import { postJSON, getJSON } from "@/app/lib/dal/global-http";
 import { redirect } from "next/navigation";
 import { getCookiesValues } from "@/app/lib/dal/cookiesStore";
+import {cookies} from "next/headers";
 import { revalidatePath } from "next/cache";
 
 
 
 
-export async function updateClass(prevState, formData) {
+export async function createClass(prevState, formData) {
     
-    const { token } = await getCookiesValues();
+    const { classesIds, token } = await getCookiesValues();
     
     const inputData = Object.fromEntries(formData);
     // const prevValues = prevState?.values || {};
-    const url = `http://localhost:4000/api/v1/classes/${inputData.id}`; // Assuming name is unique identifier for the activity, adjust if it's not the case
+    const url = "http://localhost:4000/api/v1/classes"; 
     //console.log('this is my ID !!!!!', inputData.id);
     const assetUrl = "http://localhost:4000/api/v1/assets";
     const {data} = await getJSON(assetUrl);
@@ -31,9 +31,8 @@ export async function updateClass(prevState, formData) {
 
     
     const values = {
-        id: inputData.id ? inputData.id : prevState?.id, // ID is required for the update
-        trainerId: inputData.trainerId ? inputData.trainerId : prevState?.trainerId, //
-        assetId: lastAssetId ? lastAssetId + 1 : inputData.assetId, // If there are existing assets, use the next ID, otherwise start with 1
+        trainerId: inputData.trainerId ? inputData.trainerId : "", //
+        assetId: lastAssetId ? lastAssetId + 1 : null, // 
         className: inputData.className ? inputData.className : "", // Name is required for the update, so we include it even if it hasn't changed
         classDescription: inputData.classDescription ? inputData.classDescription : "",
         classDay: inputData.classDay ? inputData.classDay : "",
@@ -44,28 +43,45 @@ export async function updateClass(prevState, formData) {
 
     //console.log('this are the values 📁', values);
 
-    const result = classScheme.safeParse(values);
+    const result = createClassSchema.safeParse(values);
 
     if(!result.success) {
         return{
             ok:false,
             errors: z.flattenError(result.error).fieldErrors,
-            values: prevState?.values, // Keep previous values in the form
+            values: values, // Keep previous values in the form
         }
     }
 
     const validatedData = result.data;
     //console.log('validation success ✅', validatedData);
     const { file, ...classData } = validatedData;
-    //console.log('this is the data to sent to classes the API ⭐', classData);
+    console.log('this is the data to sent to classes the API ⭐', classData);
     const fileData = { file };
     //console.log('this is the info for assets API ⭐', fileData);
         
-    const assetRes = await postAsset(assetUrl, fileData);
+    
+    const res = await postJSON(url, classData, token);
+    if(res.status == 404){
+        return{
+            values,
+            serverMessage: {error: "There was an error creating the class. Try again later."}
+        }
+    }
+    if (!res.ok) {
+        console.log('this is the error res: 🛑❌', res);
+        
+        return{
+            values,
+            serverMessage: {error: res.text || "Something went wrong while creating the class. Please try again."}
+        }
+    }
+    
+    const assetRes = await postAsset(assetUrl, fileData, token);
      if(assetRes.status == 404){
         return{
             values,
-            serverMessage: {error: "There was an error at update the class. Try again later."}
+            serverMessage: {error: "There was an error at uploading the image. Try again later."}
         }
     }
     if (!assetRes.ok) {
@@ -77,30 +93,16 @@ export async function updateClass(prevState, formData) {
             serverMessage: {error: assetRes.text || "Something went wrong while uploading the file. Please try again."}
         }
     };
-    
-    const res = await putJSON(url, classData, token);
-    if(res.status == 404){
-        return{
-            values,
-            serverMessage: {error: "There was an error at update the class. Try again later."}
-        }
-    }
-    if (!res.ok) {
-            console.log('this is the error res: 🛑❌', res);
-        
-            return{
-                    values,
-                    serverMessage: {error: res.text || "Something went wrong while updating the class. Please try again."}
-                }
-            }
-                   
+            classesIds.push(res.data.id);
+             cookies().set("classesIds", JSON.stringify(classesIds));
+
             //console.log('this is the res: 😁✅ ', res);
-            revalidatePath(`/popular/${res.data.id}`); 
-            redirect (`/popular/${res.data.id}`) // Redirect to activities page on success
+            revalidatePath("/popular"); 
+            redirect("/popular/") // Redirect to activities page on success
             
             // return {
             //         values: {}, // Clear form values on success
-            //         serverMessage: {success: "The class was successfully updated!"}
+            //         serverMessage: {success: "The class was successfully created!"}
             //     }
             
 }

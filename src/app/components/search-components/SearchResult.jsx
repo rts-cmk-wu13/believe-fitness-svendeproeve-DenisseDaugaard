@@ -38,8 +38,8 @@ export default function SearchResult({ searchResults }) {
         return dataToFind.includes(q);
       });
 
-      console.log('🦾', filteredClasses);
-      console.log('👩🏻', filteredTrainers);
+      //console.log('🦾', filteredClasses);
+      //console.log('👩🏻', filteredTrainers);
 
   const noResults =
     q && filteredClasses.length === 0 && filteredTrainers.length === 0;

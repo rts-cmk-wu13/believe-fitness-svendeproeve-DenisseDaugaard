@@ -22,7 +22,7 @@ export default function LoginForm(){
                     type="text"
                     name="username"
                     placeholder="Enter your username"
-                     className="border rounded-[3rem] border-gray-500 mr-2 p-3 text-black"
+                    className="border rounded-[3rem] border-gray-500 mr-2 p-3 text-black"
                     defaultValue={state?.values?.username ?? ""}
                     />
                     {state?.errors?.username && (

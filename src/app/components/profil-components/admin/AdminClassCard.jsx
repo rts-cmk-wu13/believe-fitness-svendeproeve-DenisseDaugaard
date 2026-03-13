@@ -18,7 +18,6 @@ export default function AdminClassesList({ classesData }) {
                             <Link href={`/profile/${classItem.id}`} className="btn">PARTICIPANTS</Link>
                             <div className="flex gap-2">
                                 <Link href={`/profile/updateclass/${classItem.id}`} className="btn"><FiEdit/></Link>
-                                <button className="btn"><RiDeleteBin7Line /></button>
                             </div>
                         </div>
                     </div>

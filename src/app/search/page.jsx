@@ -21,7 +21,7 @@ export default async function SearchPage() {
   return (
     <article className="p-8">
       <div className="mt-2 absolute top-8 left-8 z-50">
-        <Link href="/popular">
+        <Link href="/">
           <IoArrowBack color="gray" size={25} className="text-shadow-md" />
         </Link>
       </div>
