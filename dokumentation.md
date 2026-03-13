@@ -29,7 +29,7 @@ Projektet er udviklet med følgende teknologier:
   Applikationen kommunikerer med et eksternt API via flere requests til håndtering af brugere, hold og tilmeldinger.
 
 - **Anvendte biblioteker:**  
-  I projektet er der anvendt eksterne biblioteker for at forbedre funktionalitet og udviklingshastighed. Blandt andet er Zod anvendt til validering af formularer, Embla Carousel via embla-carousel-react til at implementere og animere testimonials-slideren, samt React Icons til håndtering og visning af ikoner i brugergrænsefladen.
+  I projektet er der anvendt eksterne biblioteker for at forbedre funktionalitet og udviklingshastighed. Blandt andet er *Zod* anvendt til validering af formularer,*Embla Carousel* via embla-carousel-react til at implementere og animere testimonials-slideren, samt React Icons og *React Toastify* via react-toastify.
 
 ## Hvorfor har vi valgt Next.js?
 
