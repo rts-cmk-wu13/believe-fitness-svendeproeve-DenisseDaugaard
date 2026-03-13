@@ -1,43 +1,91 @@
+"use client";
 
+import { useSearchParams } from "next/navigation";
 import ClassCard from "../classes-components/ClassCard";
-import Image from "next/image";
+import TrainersCard from "../classes-components/TrainersCard";
 
 export default function SearchResult({ searchResults }) {
-    console.log('💬',searchResults);
-    
-    return (
-        <div>
-           <section className="mt-12">
-            <h2 className="text-2xl mb-4">Classes</h2>
-                       <ul className="class_list">
-                           {searchResults?.classes?.map(classItem => (
-                               <li key={classItem.id} className="relative rounded-[1rem]">
-                               <ClassCard classItem={classItem} 
-                               style="w-[200px] h-[200px]" 
-                               font="text-xs"/>
-                               </li>
-                           ))}
-                       </ul>
-                       </section>
-            <h2 className="text-2xl mt-12 mb-4">Trainers</h2>
-            <ul>
-                {searchResults?.trainers?.map((item) => (
-                    <li key={item.id} className="flex items-center mb-4">
-                        <figure className="h-[100px] w-[100px] rounded-[2rem] mr-4">
-                            <Image
-                                src={item.asset.url}
-                                width={100}
-                                height={100}
-                                unoptimized
-                                alt={item.trainerName}  
-                                className="image rounded-[1rem]"
-                                />
-                        </figure>
-                        <p className="font-semibold">{item.trainerName}</p>
-                       
-                    </li>
+  const searchParams = useSearchParams();
+  const q = (searchParams.get("q") ?? "").trim().toLowerCase();
+  //console.log('💬',searchResults);
+  //console.log('🔍', q);
+  
+
+  const filteredClasses = !q
+    ? searchResults?.classes ?? []
+    : (searchResults?.classes ?? []).filter((classItem) => {
+        const dataToFind = [
+          classItem.className,
+          classItem.classDay,
+          classItem.classTime,
+          classItem.classDescription,
+        ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+
+        return dataToFind.includes(q);
+      });
+
+  const filteredTrainers = !q
+    ? searchResults?.trainers ?? []
+    : (searchResults?.trainers ?? []).filter((trainer) => {
+        const dataToFind = [trainer.trainerName]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+
+        return dataToFind.includes(q);
+      });
+
+      console.log('🦾', filteredClasses);
+      console.log('👩🏻', filteredTrainers);
+
+  const noResults =
+    q && filteredClasses.length === 0 && filteredTrainers.length === 0;
+
+  return (
+    <div>
+      {noResults ? (
+        <p className="mt-12 text-center text-gray-500 font-medium">
+          No results found
+        </p>
+      ) : (
+        <>
+          <section className="mt-12">
+            {filteredClasses.length > 0 ?( <h2 className="text-2xl mb-4">Classes</h2>) :(null)}
+            {filteredClasses.length > 0 ? (
+              <ul className="class_list">
+                {filteredClasses.map((classItem) => (
+                  <li key={classItem.id} className="relative rounded-[1rem]">
+                    <ClassCard
+                      classItem={classItem}
+                      style="w-[200px] h-[200px]"
+                      font="text-xs"
+                    />
+                  </li>
                 ))}
-            </ul>
-        </div>
-    );
+              </ul>
+            ) : null}
+          </section>
+
+          <section className="mt-12">
+            {filteredTrainers.length < 0 
+            ? ( <h2 className="text-2xl mb-4">Trainers</h2>
+            ) : null}
+           
+            {filteredTrainers.length > 0 ? (
+              <ul>
+                {filteredTrainers.map((item) => (
+                  <li key={item.id} className="flex items-center mb-4">
+                    <TrainersCard item={item} />
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </section>
+        </>
+      )}
+    </div>
+  );
 }

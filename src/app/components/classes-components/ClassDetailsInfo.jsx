@@ -1,10 +1,10 @@
 "use client"
 
-import Image from "next/image";
 import Rating from "./Rating";
 import SignUpButton from "./signup/SignUpBtn";
 import LeaveModal from "./leave/LeaveActivityModal";
 import { useState, useRef } from "react";
+import TrainersCard from "./TrainersCard";
 
 
 export default function ClassDetailsInfo({classData, averageRating, instructorData, isEnrolled, isLoggedIn, isSameDay}) {
@@ -33,20 +33,7 @@ export default function ClassDetailsInfo({classData, averageRating, instructorDa
             <div className="py-4">
                 <h3 className="py-2 font-bold">Trainer</h3>
                 <section className="flex items-center gap-4 py-4">
-                    <figure className="w-[100px] h-[100px]">
-                        <Image
-                        src={instructorData?.asset?.url}
-                        unoptimized
-                        width={100}
-                        height={100}
-                        alt={instructorData?.trainerName}
-                        className="rounded-lg image border shadow-lg rounded-lg"
-                        loading="lazy"
-                        placeholder="blur"
-                        blurDataURL="/app-images/placeholder.jpg"
-                        />
-                    </figure>
-                    <p>{instructorData?.trainerName}</p>
+                    <TrainersCard item={instructorData} />
                 </section>
 
                 {!isEnrolled && isLoggedIn && !isSameDay && (<SignUpButton classId={classData?.id} />) }

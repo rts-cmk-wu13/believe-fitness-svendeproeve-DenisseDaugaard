@@ -290,7 +290,46 @@ Tjeneren svarede, men sagde, at noget var gået galt
 # Valgfri opgave B – Opret bruger
 
 
+Øvelsen bestod af at lave en POST request til API'et for at oprette en ny bruger, oprette formularen og validere den.
 
- ![Figma](./public/app-images/signup-figma_small.png)
- ![API](./public/app-images/API.png)
+---
 
+####  Denne øvelse præsenterede nogle udfordringer.
+
+1. Designet i Figma-filen opfyldte ikke API-kravene.
+
+    ![Figma](./public/app-images/signup-figma_small.png)
+    ![API](./public/app-images/API.png)
+---
+
+2. API-fejl
+
+    Under udviklingen blev der identificeret en fejl i API'et ved oprettelse af nye brugere. API'et modtog ikke felterne userFirstName og userLastName fra requesten, hvilket betød at disse oplysninger ikke blev gemt i databasen.
+    Problemet blev løst ved at tilføje disse felter i brugeroprettelsesfunktionen, så værdierne nu bliver hentet fra req.fields og gemt korrekt i databasen.
+---
+
+```js
+async function createSingleUser(req, res, next) {
+	try {
+		let user = await User.create({
+			userFirstName: req.fields.userFirstName,// tilføjet
+			userLastName: req.fields.userLastName,// tilføjet
+			username: req.fields.username,
+			password: hashSync(req.fields.password, 15),
+			role: "default"
+		});
+		res.json(user);
+	} catch (error) {
+		console.error(error);
+		res.status(500).end();
+	}
+}
+
+```
+---
+# Mindre detaljer ændret i designet
+
+1. Jeg besluttede at tilføje en bekræftelsesfunktion, når en bruger fjernes fra klassen, eller når en klasse fjernes som administrator.
+
+
+2. Jeg besluttede *ikke* at inkludere stjernebedømmelser i designet, da jeg ikke valgte ***Valgfri opgave A – Ratings*** , og kun én hold inkluderede en rating i API'en.
