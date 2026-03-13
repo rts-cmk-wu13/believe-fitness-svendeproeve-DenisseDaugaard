@@ -2,6 +2,8 @@ import { Geist,Poppins } from "next/font/google";
 import "./css/globals.css";
 import { getCookiesValues } from "./lib/dal/cookiesStore";
 import Navigation from "./components/global-components/Navigation";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +36,7 @@ export default async function RootLayout({ children}) {
           </header>
           {children}
         </main>
+        <ToastContainer />
       </body>
     </html>
   );

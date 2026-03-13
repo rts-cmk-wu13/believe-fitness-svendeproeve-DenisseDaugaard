@@ -1,6 +1,7 @@
 "use client";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { sendMessage } from "./sendMessageAction";
+import { toast } from "react-toastify";
 
 export default function Contact() {
   const initialState = {
@@ -14,6 +15,16 @@ export default function Contact() {
   };
 
   const [state, formAction, isPending] = useActionState(sendMessage, initialState);
+
+    useEffect(() => {
+      if (state?.serverMessage?.success) {
+        toast.success(state.serverMessage.success, {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      }
+    }, [state?.serverMessage?.success]);
+
   //console.log(state);
   
   return (
@@ -61,9 +72,9 @@ export default function Contact() {
               <span className="error_response mt-2 mb-4">{state.serverMessage.error}</span>
             )}
         
-            {state?.serverMessage?.success && (
+            {/* {state?.serverMessage?.success && (
               <span className="success_response mb-4">{state.serverMessage.success}</span>
-            )}
+            )} */}
 
             <button
                 className="btn w-full bg-white disabled:bg-gray-300 disabled:opacity-50 text-black text-sm"

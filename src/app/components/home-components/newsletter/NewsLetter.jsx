@@ -1,7 +1,8 @@
 "use client"
 
-import { useActionState } from "react"
+import { useActionState, useEffect } from "react"
 import { signupNewsLetters } from "./signupNewsLettersAction"
+import {toast} from "react-toastify"
 
 export default function NewsLetter(){
     const initialState = {
@@ -10,6 +11,16 @@ export default function NewsLetter(){
         serverMessage: null,
     }
     const [state, formAction, isPending] = useActionState(signupNewsLetters, initialState)
+
+      useEffect(() => {
+    if (state?.serverMessage?.success) {
+      toast.success(state.serverMessage.success, {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
+  }, [state?.serverMessage?.success]);
+
     return(
         <section className="p-4 mb-8">
             <h2 className="title">Sign up for our newsletter</h2>
@@ -41,9 +52,9 @@ export default function NewsLetter(){
           <span className="error_response mt-2">{state.serverMessage.error}</span>
         )}
     
-        {state?.serverMessage?.success && (
+        {/* {state?.serverMessage?.success && (
           <span className="success_response mt-2">{state.serverMessage.success}</span>
-        )}
+        )} */}
             </form>
         </section>
     )
